@@ -25,9 +25,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
-import com.codisimus.plugins.phatloots.PhatLootsAPI;
-import com.codisimus.plugins.phatloots.loot.CommandLoot;
-import com.codisimus.plugins.phatloots.loot.LootBundle;
+import nativelevel.phatloots.PhatLootsAPI;
+import nativelevel.phatloots.loot.CommandLoot;
+import nativelevel.phatloots.loot.LootBundle;
 import com.gmail.nossr50.datatypes.skills.SkillType;
 import com.gmail.nossr50.util.player.UserManager;
 import com.herocraftonline.heroes.characters.Hero;
@@ -149,12 +149,12 @@ public class Quest {
 			nextStage.startEvent.fire(quester, this);
 		}
 		updateCompass(quester, nextStage);
-		String msg = Lang.get("questObjectivesTitle");
-		msg = msg.replaceAll("<quest>", name);
-		quester.getPlayer().sendMessage(ChatColor.GOLD + msg);
-		for (String s : quester.getObjectivesReal(this)) {
-			quester.getPlayer().sendMessage(s);
-		}
+//		String msg = Lang.get("questObjectivesTitle");
+//		msg = msg.replaceAll("<quest>", name);
+//		quester.getPlayer().sendMessage(ChatColor.GOLD + msg);
+//		for (String s : quester.getObjectivesReal(this)) {
+//			quester.getPlayer().sendMessage(s);
+//		}
 		String stageStartMessage = quester.getCurrentStage(this).startMessage;
 		if (stageStartMessage != null) {
 			quester.getPlayer().sendMessage(Quests.parseString(stageStartMessage, this));

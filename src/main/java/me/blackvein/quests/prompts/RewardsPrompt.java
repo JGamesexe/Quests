@@ -26,8 +26,8 @@ import org.bukkit.conversations.Prompt;
 import org.bukkit.conversations.StringPrompt;
 import org.bukkit.inventory.ItemStack;
 
-import com.codisimus.plugins.phatloots.PhatLoot;
-import com.codisimus.plugins.phatloots.PhatLootsAPI;
+import nativelevel.phatloots.PhatLoot;
+import nativelevel.phatloots.PhatLootsAPI;
 import com.gmail.nossr50.datatypes.skills.SkillType;
 import com.herocraftonline.heroes.characters.classes.HeroClass;
 

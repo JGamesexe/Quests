@@ -337,12 +337,12 @@ public class Quester {
 							+ " subtitle " + "{\"text\":\"" + q.name + "\",\"color\":\"yellow\"}");
 				}
 			}
-			String msg = Lang.get("questObjectivesTitle");
-			msg = msg.replaceAll("<quest>", q.name);
-			getPlayer().sendMessage(ChatColor.GOLD + msg);
-			for (String s : getObjectivesReal(q)) {
-				player.sendMessage(s);
-			}
+//			String msg = Lang.get("questObjectivesTitle");
+//			msg = msg.replaceAll("<quest>", q.name);
+//			getPlayer().sendMessage(ChatColor.GOLD + msg);
+//			for (String s : getObjectivesReal(q)) {
+//				player.sendMessage(s);
+//			}
 			String stageStartMessage = stage.startMessage;
 			if (stageStartMessage != null) {
 				getPlayer().sendMessage(Quests.parseString(stageStartMessage, q));

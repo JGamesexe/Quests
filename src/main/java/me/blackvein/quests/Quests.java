@@ -75,8 +75,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-import com.codisimus.plugins.phatloots.PhatLoots;
-import com.codisimus.plugins.phatloots.PhatLootsAPI;
+import nativelevel.phatloots.PhatLoots;
+import nativelevel.phatloots.PhatLootsAPI;
 import com.evilmidget38.UUIDFetcher;
 import com.gmail.nossr50.mcMMO;
 import com.gmail.nossr50.datatypes.player.McMMOPlayer;
@@ -1865,7 +1865,7 @@ public class Quests extends JavaPlugin implements ConversationAbandonedListener 
 						player.sendMessage(ChatColor.GOLD + msg);
 						try {
 							for (String s : getQuester(player.getUniqueId()).getObjectivesReal(q)) {
-								player.sendMessage(s);
+								player.sendMessage("§a-" + s);
 							}
 						} catch (NullPointerException e) {
 							getLogger().severe("Objectives were null for " + q.name + ". Include quests.yml in Github #238");

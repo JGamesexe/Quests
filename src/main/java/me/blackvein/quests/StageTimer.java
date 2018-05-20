@@ -55,13 +55,13 @@ public class StageTimer implements Runnable {
 				quester.addEmptiesFor(quest, 0);
 				quester.getQuestData(quest).delayStartTime = 0;
 				quester.getQuestData(quest).delayTimeLeft = -1;
-				String msg = Lang.get("questObjectivesTitle");
-				msg = msg.replaceAll("<quest>", quest.name);
-				player.sendMessage(ChatColor.GOLD + msg);
-				player.sendMessage(ChatColor.GOLD + Lang.get("questObjectivesTitle"));
-				for (String s : quester.getObjectivesReal(quest)) {
-					player.sendMessage(s);
-				}
+//				String msg = Lang.get("questObjectivesTitle");
+//				msg = msg.replaceAll("<quest>", quest.name);
+//				player.sendMessage(ChatColor.GOLD + msg);
+//				player.sendMessage(ChatColor.GOLD + Lang.get("questObjectivesTitle"));
+//				for (String s : quester.getObjectivesReal(quest)) {
+//					player.sendMessage(s);
+//				}
 				String stageStartMessage = quester.getCurrentStage(quest).startMessage;
 				if (stageStartMessage != null) {
 					quester.getPlayer().sendMessage(Quests.parseString(stageStartMessage, quest));
