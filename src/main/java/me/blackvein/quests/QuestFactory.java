@@ -531,12 +531,11 @@ public class QuestFactory implements ConversationAbandonedListener {
 		@Override
 		public Prompt acceptInput(ConversationContext context, String input) {
 			if (input.equalsIgnoreCase(Lang.get("cmdCancel")) == false) {
-				if (input.startsWith("++")) {
-					if (context.getSessionData(CK.Q_ASK_MESSAGE) != null) {
-						context.setSessionData(CK.Q_ASK_MESSAGE, context.getSessionData(CK.Q_ASK_MESSAGE) + " " + input.substring(2));
-						return new CreateMenuPrompt();
-					}
-				}
+				if (input.startsWith("++") || input.startsWith("#+"))
+					if (context.getSessionData(CK.Q_ASK_MESSAGE) != null)
+						if (input.startsWith("++")) input = (context.getSessionData(CK.Q_ASK_MESSAGE) + " " + input.substring(2));
+						else if (input.startsWith("#+")) input = (context.getSessionData(CK.Q_ASK_MESSAGE) + "\n" + input.substring(2));
+
 				context.setSessionData(CK.Q_ASK_MESSAGE, input);
 			}
 			return new CreateMenuPrompt();
@@ -553,12 +552,11 @@ public class QuestFactory implements ConversationAbandonedListener {
 		@Override
 		public Prompt acceptInput(ConversationContext context, String input) {
 			if (input.equalsIgnoreCase(Lang.get("cmdCancel")) == false) {
-				if (input.startsWith("++")) {
-					if (context.getSessionData(CK.Q_FINISH_MESSAGE) != null) {
-						context.setSessionData(CK.Q_FINISH_MESSAGE, context.getSessionData(CK.Q_FINISH_MESSAGE) + " " + input.substring(2));
-						return new CreateMenuPrompt();
-					}
-				}
+				if (input.startsWith("++") || input.startsWith("#+"))
+					if (context.getSessionData(CK.Q_FINISH_MESSAGE) != null)
+						if (input.startsWith("++")) input = (context.getSessionData(CK.Q_FINISH_MESSAGE) + " " + input.substring(2));
+						else if (input.startsWith("#+")) input = (context.getSessionData(CK.Q_FINISH_MESSAGE) + "\n" + input.substring(2));
+
 				context.setSessionData(CK.Q_FINISH_MESSAGE, input);
 			}
 			return new CreateMenuPrompt();

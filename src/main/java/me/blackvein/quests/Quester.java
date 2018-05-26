@@ -326,9 +326,9 @@ public class Quester {
 						Quests.removeItem(player.getInventory(), is);
 					}
 				}
-				String accepted = Lang.get("questAccepted");
-				accepted = accepted.replaceAll("<quest>", q.name);
-				player.sendMessage(ChatColor.GREEN + accepted);
+//				String accepted = Lang.get("questAccepted");
+//				accepted = accepted.replaceAll("<quest>", q.name);
+//				player.sendMessage(ChatColor.GREEN + accepted);
 				player.sendMessage("");
 				if (plugin.showQuestTitles) {
 					Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "title " + player.getName()
@@ -337,16 +337,18 @@ public class Quester {
 							+ " subtitle " + "{\"text\":\"" + q.name + "\",\"color\":\"yellow\"}");
 				}
 			}
-//			String msg = Lang.get("questObjectivesTitle");
-//			msg = msg.replaceAll("<quest>", q.name);
-//			getPlayer().sendMessage(ChatColor.GOLD + msg);
-//			for (String s : getObjectivesReal(q)) {
-//				player.sendMessage(s);
-//			}
 			String stageStartMessage = stage.startMessage;
 			if (stageStartMessage != null) {
 				getPlayer().sendMessage(Quests.parseString(stageStartMessage, q));
 			}
+//			String msg = Lang.get("questObjectivesTitle");
+//			msg = msg.replaceAll("<quest>", q.name);
+//			getPlayer().sendMessage(ChatColor.GOLD + msg);
+			player.sendMessage("");
+			for (String s : getObjectivesReal(q)) {
+				player.sendMessage("§a- " + s);
+			}
+			player.sendMessage("");
 			if (stage.chatEvents.isEmpty() == false) {
 				for (String chatTrigger : stage.chatEvents.keySet()) {
 					questData.get(q).eventFired.put(chatTrigger, false);
@@ -1145,6 +1147,7 @@ public class Quester {
 	 */
 	public void finishObjective(Quest quest, String objective, ItemStack material, ItemStack delivery, Enchantment enchantment, EntityType mob, String player, NPC npc, Location location, DyeColor color, String pass, CustomObjective co) {
 		Player p = getPlayer();
+		p.sendMessage("");
 		if (getCurrentStage(quest).objectiveOverride != null) {
 			if (testComplete(quest)) {
 				String message = ChatColor.GREEN + "(" + Lang.get("completed") + ") " + getCurrentStage(quest).objectiveOverride;

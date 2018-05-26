@@ -94,6 +94,7 @@ public class Quest {
 	public void nextStage(Quester q) {
 		String stageCompleteMessage = q.getCurrentStage(this).completeMessage;
 		if (stageCompleteMessage != null) {
+			q.getPlayer().sendMessage("");
 			q.getPlayer().sendMessage(Quests.parseString(stageCompleteMessage, this));
 		}
 		if (Quests.useCompass) {
@@ -149,16 +150,19 @@ public class Quest {
 			nextStage.startEvent.fire(quester, this);
 		}
 		updateCompass(quester, nextStage);
+		String stageStartMessage = quester.getCurrentStage(this).startMessage;
+		if (stageStartMessage != null) {
+			quester.getPlayer().sendMessage("");
+			quester.getPlayer().sendMessage(Quests.parseString(stageStartMessage, this));
+		}
 //		String msg = Lang.get("questObjectivesTitle");
 //		msg = msg.replaceAll("<quest>", name);
 //		quester.getPlayer().sendMessage(ChatColor.GOLD + msg);
-//		for (String s : quester.getObjectivesReal(this)) {
-//			quester.getPlayer().sendMessage(s);
-//		}
-		String stageStartMessage = quester.getCurrentStage(this).startMessage;
-		if (stageStartMessage != null) {
-			quester.getPlayer().sendMessage(Quests.parseString(stageStartMessage, this));
+		quester.getPlayer().sendMessage("");
+		for (String s : quester.getObjectivesReal(this)) {
+			quester.getPlayer().sendMessage(" §a- " + s);
 		}
+		quester.getPlayer().sendMessage("");
 		quester.updateJournal();
 	}
 

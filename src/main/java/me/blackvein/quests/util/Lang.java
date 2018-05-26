@@ -31,7 +31,7 @@ import me.blackvein.quests.Quests;
 
 public class Lang {
 
-	public static String iso = "en-US";
+	public static String iso = "em-US";
 	private static final LangToken tokens = new LangToken();
 	public static final LinkedHashMap<String, String> langMap = new LinkedHashMap<String, String>();
 	private final Quests plugin;

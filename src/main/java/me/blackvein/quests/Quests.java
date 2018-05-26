@@ -1865,7 +1865,7 @@ public class Quests extends JavaPlugin implements ConversationAbandonedListener 
 						player.sendMessage(ChatColor.GOLD + msg);
 						try {
 							for (String s : getQuester(player.getUniqueId()).getObjectivesReal(q)) {
-								player.sendMessage("§a-" + s);
+								player.sendMessage(" §a- " + s);
 							}
 						} catch (NullPointerException e) {
 							getLogger().severe("Objectives were null for " + q.name + ". Include quests.yml in Github #238");

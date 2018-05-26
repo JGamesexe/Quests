@@ -3684,6 +3684,11 @@ public class CreateStagePrompt extends FixedSetPrompt {
 		public Prompt acceptInput(ConversationContext context, String input) {
 			Player player = (Player) context.getForWhom();
 			if (input.equalsIgnoreCase(Lang.get("cmdCancel")) == false && input.equalsIgnoreCase(Lang.get("cmdClear")) == false) {
+				if (input.startsWith("++") || input.startsWith("#+"))
+					if (context.getSessionData(pref + CK.S_START_MESSAGE) != null)
+                        if (input.startsWith("++")) input = (pref + context.getSessionData(CK.S_START_MESSAGE) + " " + input.substring(2));
+                        else if (input.startsWith("#+")) input = (pref + context.getSessionData(CK.S_START_MESSAGE) + "\n" + input.substring(2));
+
 				context.setSessionData(pref + CK.S_START_MESSAGE, input);
 				return new CreateStagePrompt(stageNum, questFactory, citizens);
 			} else if (input.equalsIgnoreCase(Lang.get("cmdClear"))) {
@@ -3707,6 +3712,11 @@ public class CreateStagePrompt extends FixedSetPrompt {
 		public Prompt acceptInput(ConversationContext context, String input) {
 			Player player = (Player) context.getForWhom();
 			if (input.equalsIgnoreCase(Lang.get("cmdCancel")) == false && input.equalsIgnoreCase(Lang.get("cmdClear")) == false) {
+				if (input.startsWith("++") || input.startsWith("#+"))
+					if (context.getSessionData(pref + CK.S_COMPLETE_MESSAGE) != null)
+						if (input.startsWith("++")) input = (pref + context.getSessionData(CK.S_COMPLETE_MESSAGE) + " " + input.substring(2));
+						else if (input.startsWith("#+")) input = (pref + context.getSessionData(CK.S_COMPLETE_MESSAGE) + "\n" + input.substring(2));
+
 				context.setSessionData(pref + CK.S_COMPLETE_MESSAGE, input);
 				return new CreateStagePrompt(stageNum, questFactory, citizens);
 			} else if (input.equalsIgnoreCase(Lang.get("cmdClear"))) {
